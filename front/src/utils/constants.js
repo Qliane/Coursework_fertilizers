@@ -1,0 +1,89 @@
+// src/utils/constants.js
+export const API_BASE_URL = 'http://localhost:5000/api';
+
+export const ROLES = {
+  STOREKEEPER: 1,
+  DIRECTOR: 2,
+  OFFICE_WORKER: 3,
+  TRUSTED_PERSON: 4,
+  DRIVER: 5
+};
+
+export const ROLE_NAMES = {
+  1: 'Кладовщик',
+  2: 'Директор склада',
+  3: 'Работник офиса',
+  4: 'Доверенное лицо',
+  5: 'Водитель'
+};
+
+export const ROLE_PERMISSIONS = {
+  VIEW_STOCK: [ROLES.STOREKEEPER, ROLES.DIRECTOR],
+  VIEW_ORDERS: [ROLES.STOREKEEPER, ROLES.DIRECTOR, ROLES.OFFICE_WORKER],
+  MANAGE_ORDERS: [ROLES.OFFICE_WORKER],
+  RECEIVE_ORDERS: [ROLES.STOREKEEPER],
+  VIEW_REFERENCES: [ROLES.STOREKEEPER, ROLES.DIRECTOR, ROLES.OFFICE_WORKER],
+  MANAGE_REFERENCES: [ROLES.OFFICE_WORKER],
+
+  VIEW_PARTNERS: [ROLES.OFFICE_WORKER],
+  MANAGE_PARTNERS: [ROLES.OFFICE_WORKER],
+  VIEW_STORAGES: [ROLES.OFFICE_WORKER],
+  MANAGE_STORAGES: [ROLES.OFFICE_WORKER],
+  VIEW_UPD: [ROLES.STOREKEEPER, ROLES.DIRECTOR, ROLES.TRUSTED_PERSON],
+  MANAGE_UPD: [ROLES.OFFICE_WORKER],
+  MANAGE_BILLS: [ROLES.STOREKEEPER],
+  SHIP_UPD: [ROLES.STOREKEEPER],
+  SIGN_ELECTRONIC_BILL: [ROLES.DIRECTOR, ROLES.TRUSTED_PERSON],
+  VIEW_USERS: [ROLES.OFFICE_WORKER],
+  MANAGE_USERS: [ROLES.OFFICE_WORKER],
+  VIEW_TRIPS: [ROLES.DRIVER],
+};
+
+export const ORDER_STATUS = {
+  ALL: 'all',
+  PENDING: 'pending',
+  COMPLETED: 'completed'
+};
+
+export const ORDER_STATUS_LABELS = {
+  [ORDER_STATUS.PENDING]: 'Ожидает приёмки',
+  [ORDER_STATUS.COMPLETED]: 'Проведён',
+  all: 'Все'
+};
+
+export const ORDER_STATUS_COLORS = {
+  [ORDER_STATUS.PENDING]: 'warning',
+  [ORDER_STATUS.COMPLETED]: 'success'
+};
+
+// Статусы ЭТрН
+export const ELECTRONIC_BILL_STATUS = {
+  PENDING_SHIPMENT: 0,
+  SIGNED_BY_DIRECTOR: 1,
+  SIGNED_BY_CLIENT: 2,
+  ACCEPTED: 3
+};
+
+export const ELECTRONIC_BILL_STATUS_LABELS = {
+  [ELECTRONIC_BILL_STATUS.PENDING_SHIPMENT]: 'Ожидает отгрузки',
+  [ELECTRONIC_BILL_STATUS.SIGNED_BY_DIRECTOR]: 'Подписано директором',
+  [ELECTRONIC_BILL_STATUS.SIGNED_BY_CLIENT]: 'Подписано клиентом',
+  [ELECTRONIC_BILL_STATUS.ACCEPTED]: 'Принято'
+};
+
+
+// Фильтры статусов ЭТрН для водителя
+export const DRIVER_EB_STATUS_FILTERS = {
+  ALL: 'all',           
+  PENDING: 'pending',   
+  TRANSFERRED: 'transferred',
+  ACCEPTED: 'accepted'  
+};
+
+
+export const DRIVER_EB_STATUS_LABELS = {
+  [DRIVER_EB_STATUS_FILTERS.ALL]: 'Все перевозки',
+  [DRIVER_EB_STATUS_FILTERS.PENDING]: 'Ожидают отгрузки',
+  [DRIVER_EB_STATUS_FILTERS.TRANSFERRED]: 'Переданы на перевозку',
+  [DRIVER_EB_STATUS_FILTERS.ACCEPTED]: 'Приняты'
+};

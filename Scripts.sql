@@ -93,3 +93,8 @@ AS $$
     WHERE coalesce(i.total_incoming, 0) - coalesce(o.total_outgoing, 0) > 0
     ORDER BY f.fertil_name;
 $$;
+
+
+CREATE INDEX order_created_at_index ON "ORDER" (ORDER_CREATED_AT); 
+CREATE INDEX upd_ship_date_index ON UPD (UPD_SHIP_DATE);
+CREATE INDEX upd_concl_date_index ON UPD (UPD_CONCL_DATE);
